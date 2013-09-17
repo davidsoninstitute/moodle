@@ -1006,17 +1006,17 @@ function quiz_question_tostring($question, $showicon = false,
         $showquestiontext = true, $return = true) {
     global $COURSE;
     $result = '';
-    $result .= '<span class="questionname">';
+    $result .= '<span class="questionname" title="'.shorten_text(format_string($question->name), 200).'">';
     if ($showicon) {
         $result .= print_question_icon($question, true);
         echo ' ';
     }
-    $result .= shorten_text(format_string($question->name), 200) . '</span>';
+    $result .= shorten_text(format_string($question->name), 200) . '</span>:<br/>';
     if ($showquestiontext) {
         $questiontext = question_utils::to_plain_text($question->questiontext,
                 $question->questiontextformat, array('noclean' => true, 'para' => false));
         $questiontext = shorten_text($questiontext, 200);
-        $result .= '<span class="questiontext">';
+        $result .= '<span class="questiontext" title="'.$questiontext.'">';
         if (!empty($questiontext)) {
             $result .= $questiontext;
         } else {
