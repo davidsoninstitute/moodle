@@ -363,7 +363,8 @@ if ($mode === MODE_BRIEF && !isset($hiddenfields['country'])) {
 }
 if (!isset($hiddenfields['lastaccess'])) {
     $tablecolumns[] = 'lastaccess';
-    $tableheaders[] = get_string('lastaccess');
+    $current_context = ($isfrontpage) ? get_string('site') : get_string('course');
+    $tableheaders[] = get_string('lastaccess')." ".$current_context;
 }
 
 if ($bulkoperations && $mode === MODE_USERDETAILS) {
